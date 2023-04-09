@@ -1,7 +1,7 @@
 import {
     UsecaseInference,
     UsecasesInference,
-} from "./helpers/infer";
+} from "./infer";
 
 export namespace hexagon {
     export namespace infer {

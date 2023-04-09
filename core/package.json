@@ -1,5 +1,5 @@
 {
-  "name": "@vdstack/hexagon",
+  "name": "@vdstack/hexagon-core",
   "version": "0.0.1",
   "description": "hexagonal architecture framework for TypeScript",
   "main": "dist/index.js",
