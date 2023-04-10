@@ -3,7 +3,7 @@
  * They need to provide the following signature: (params: Record<string, any>, dependencies: Record<string, any>) => any
 */
 
-type UseCase = (params: Record<string, any>, dependencies: Record<string, any>) => any;
+export type UseCase = (params: Record<string, any>, dependencies: Record<string, any>) => any;
 
 type Extractor<T extends UseCase> = T extends (params: infer P, dependencies: infer D) => infer R ? {
     Params: P;
@@ -27,4 +27,10 @@ export type UsecasesInference<T extends Record<string, UseCase>> = {
     inferParams: { [K in keyof T]: ParametersExtractor<T[K]> };
     inferDependencies: { [K in keyof T]: DependenciesExtractor<T[K]> };
     inferResults: { [K in keyof T]: ResultExtractor<T[K]> };
+}
+
+export type DrivingPortInference<T extends Record<string, UseCase>> = {
+    infer: {
+        [K in keyof T]: (params: ParametersExtractor<T[K]>) => ResultExtractor<T[K]>;
+    }
 }
